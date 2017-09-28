@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+{% load bootstrap4 %}
+{% load staticfiles i18n %}
+<html{% if LANGUAGE_CODE %} lang="{{ LANGUAGE_CODE }}"{% endif %}>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}{% endblock %}</title>
+    <script src="{% static '/jquery-3.2.1.js' %}"></script>
+    <script src="{% static '/bootstrap-3.3.7.js' %}"></script>
+
+    <link href="{% static '/bootstrap-3.3.7.css' %}" rel="stylesheet">
+    
+    <link rel="stylesheet" type="text/css" href="{% static '/carousel.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/docs.css' %}">
+    
+
+
+
+    {% block bootstrap4_extra_head %}{% endblock %}
+
+</head>
+
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">{% trans 'Monitor-Platform' %}</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            {# <li><a href="/">主页</a></li> #}
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans 'Manage Tasks' %} <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">{% trans 'Define Task' %}</a></li>
+                <li><a href="#">{% trans 'Start/Stop Task' %}</a></li>
+                <li><a href="/">{% trans 'Log Reports' %}</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans 'Helps' %} <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="http://proposal.aviva-cofco.com.cn/ACLife/json/index.jsp" target="_blank">{% trans 'Json Logs' %}</a></li>
+                
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">{% trans 'Others' %}</li>
+                <li><a href="{% static '/docs/build/html/index.html' %}" target="_blank">{% trans 'Documention' %}</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans 'Switch Languages' %} <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">{% trans 'Engalish' %}</a></li>
+                <li><a href="#">{% trans 'Chinese' %}</a></li>
+                <li><a href="/">{% trans 'Chinese TW' %}</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+    
+    <div class="bs-docs-masthead" id="content" tabindex="-1" role="main" >
+      <div class="container">
+        <span class="bs-docs-booticon bs-docs-booticon-lg bs-docs-booticon-outline">M</span>
+        <p class="lead">{% block bootstrap4_h2%} {% endblock %}</p>
+      </div>
+    </div>
+
+{% block bootstrap4_before_content %}{% endblock %}
+{% block bootstrap4_content %}{% endblock %}
+{% block bootstrap4_after_content %}{% endblock %}
+{% block bootstrap4_extra_script %}{% endblock %}
+
+<footer class="footer navbar-fixed-bottom label-info">
+  <div class="container">
+    Copy Right @ 2017
+  </div>
+</footer>
+</body>
+
+</html>
